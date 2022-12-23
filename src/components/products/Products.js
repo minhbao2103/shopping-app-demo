@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useState } from 'react'
 
-const Products = ({productItems}) => {
+const Products = ({productItems,handleAddProduct}) => {
+
 
   return (
     <Container>
@@ -11,7 +13,7 @@ const Products = ({productItems}) => {
                     <Logo src={productItem.image} alt="" />
                     <h3>{productItem.name}</h3>
                     <p>Price: ${productItem.price}</p>
-                    <button>Add to cart</button>
+                    <button onClick={() => handleAddProduct(productItem)}>Add to cart</button>
                 </ContentProductItem>
             ) )}
         </ContentContainer>
