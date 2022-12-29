@@ -32,6 +32,12 @@ const ContentContainer =styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   
+  @media screen and (max-width: 710px) {
+    margin-left: 140px;
+  }
+  @media screen and (max-width: 510px) {
+    margin-left: 60px;
+  }
   @media screen and (max-width: 450px) {
     margin-left: 24px;
   }

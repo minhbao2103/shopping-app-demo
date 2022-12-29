@@ -12,7 +12,7 @@ const Switch = ({productItems,items,handleAddProduct,handleRemoveProduct}) => {
 
            <Route path='/login' element={<Login />}></Route>
 
-           <Route path='/cart' element={<Cart items={items} handleAddProduct={handleAddProduct} handleRemoveProduct={handleRemoveProduct} />}></Route>
+           <Route path='/cart' element={<Cart  items={items} handleAddProduct={handleAddProduct} handleRemoveProduct={handleRemoveProduct} />}></Route>
         </Routes>
   
   )
