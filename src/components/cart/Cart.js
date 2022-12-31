@@ -87,7 +87,7 @@ const ProductItem = styled.div`
 
    img {
     height: 120px;
-    width: 160px
+    width: 140px
   }
    
   button {
@@ -99,7 +99,9 @@ const ProductItem = styled.div`
 
   img {
     height: 120px;
-    width: 160px
+    width: 160px;
+    background: #eee;
+  box-shadow: 0 8px 8px -4px #C0C0C0;
   }
 
   p {

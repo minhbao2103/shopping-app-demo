@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <Router>
-      <Header />
+      <Header items={items} />
       <Switch productItems= {productItems} handleAddProduct={handleAddProduct}  handleRemoveProduct={handleRemoveProduct} items={items}/>
     </Router>
   )

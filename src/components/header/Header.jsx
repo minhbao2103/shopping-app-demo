@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import {AiOutlineShoppingCart} from "react-icons/ai"
 
-const Header = () => {
+import Cart from '../cart/Cart'
+
+const Header = ({items}) => {
   return (
     <HeaderContainer>
         <BongHome>
@@ -22,7 +24,12 @@ const Header = () => {
             </TitleContent>
 
             <TitleContent>
-            <StyledLink to="/cart" ><AiOutlineShoppingCart /></StyledLink>
+            <StyledLink to="/cart" ><AiOutlineShoppingCart />
+                {items.lenght === 0 
+                ? <span></span> 
+                : <span style={{border:' 1px solid black',borderRadius:'50%', }}
+                ><span style={{display:'inline-block', height:'24px', width:'24px',textAlign:'center',color:'red'}}>{items.length}</span></span>} 
+            </StyledLink>
             </TitleContent>
 
         </HeaderContent>
