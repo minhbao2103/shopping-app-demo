@@ -47,8 +47,9 @@ const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     overflow: hidden;
-    background: #D8D8D8;
+    background: #6f77e2;
     z-index: 10;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `
 
 const BongHome = styled.div`

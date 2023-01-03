@@ -1,37 +1,48 @@
 import React from 'react'
+import { useState } from 'react'
+import Register from '../register/Register'
 import styled from 'styled-components'
 import {BsPerson} from 'react-icons/bs'
 import {RiLockPasswordLine} from 'react-icons/ri'
 import {FaFacebook} from 'react-icons/fa'
 import {AiFillTwitterCircle} from 'react-icons/ai'
 import {SiYoutubemusic} from 'react-icons/si'
+import { useRef } from 'react'
 
-const Login = () => {
+const Login = ({handleSubmitAccount}) => {
+
+  const [email,setEmail] = useState('')
+  const refEmail = useRef()
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value)
+  }
+    console.log(email);
   return (
-   <FormContent>
+  <FormContainer>
+   <FormContent onSubmit={handleSubmitAccount}>
     <TitleDiv><h1>Login</h1></TitleDiv>
       <LoginForm>
     <FormInput>
       <h5>UserName</h5>
       <div style={{display:'flex',borderBottom:'2px solid gray'}}>
       <BsPerson style={{display:'block', margin:'12px auto'}}/>
-      <input type={`text`} placeholder={`vui long nhap tai khoan`}/>
+      <input type={`text`} placeholder={`Type your username`} name={`email`} onChange={handleChangeEmail} value={email} ref={refEmail}/>
       </div>
     </FormInput>
     <FormInput>
      <h5>Password</h5>
      <div style={{display:'flex',borderBottom:'2px solid gray'}}>
       <RiLockPasswordLine style={{display:'block', margin:'12px auto'}}/>
-      <input type={`text`} placeholder={`vui long nhap tai khoan`}/>
+      <input type={`password`} placeholder={`Type your password`} name={`password`}/>
       </div>
       <div style={{display:'block',margin:'8px auto',padding:'4px',textAlign:'center'}}>
         <a href='/' style={{color:'black',textDecoration:'none'}} >Forgot password?</a>
       </div>
     </FormInput>
-      </LoginForm>
     <LoginButton><h3>Login</h3></LoginButton>
+      </LoginForm>
 
-    <div style={{display:'block',margin:'24px 0px auto',textAlign:'center'}}
+    <div style={{display:'block',margin:'64px 0px auto',textAlign:'center'}}
         ><p>Or Sign Up Using</p></div>
 
     <div style={{display:'block',margin:'8px 0px auto',textAlign:'center', fontSize:'24px'}}
@@ -44,20 +55,52 @@ const Login = () => {
     <div style={{display:'block',margin:'8px 0px auto',textAlign:'center'}}
         ><p>Or</p></div>
      <div style={{display:'block',margin:'8px 0px auto',textAlign:'center'}}
-        ><a href='/' style={{fontWeight:'500', textDecoration:'none',color:'black'}}>SIGN UP</a></div>
+        ><a href='/' style={{fontWeight:'500', textDecoration:'none',color:'black'}}><Register /></a></div>
    </FormContent>
+   </FormContainer>
   )
 }
 
 export default Login
 
+const FormContainer = styled.div`
+  padding-top: 48px;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+
+  @keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+`
 const FormContent = styled.form`
   height: 500px;
   width: 30%;
   display: block;
-  margin: 48px auto;
+  margin: 0 auto;
   border: 1px solid black;
   border-radius: 12px;
+  background: white;
+  @media screen and (max-width: 1080px) {
+    width:40%;
+  }
+  @media screen and (max-width: 800px) {
+    width:60%;
+  }
+  @media screen and (max-width: 500px) {
+    width:80%;
+  }
 `
 const TitleDiv = styled.div`
   display: block;
@@ -93,7 +136,7 @@ const FormInput = styled.div`
 `
 const LoginButton = styled.button`
   display: block;
-  margin: 4px auto;
+  margin: 36px auto;
   height: 40px;
   width: 70%;
   border:none;
