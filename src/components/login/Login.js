@@ -10,39 +10,76 @@ import {SiYoutubemusic} from 'react-icons/si'
 import { useRef } from 'react'
 
 const Login = ({handleSubmitAccount}) => {
-
-  const [email,setEmail] = useState('')
+  const [email,setEmail] = useState({string:'', hasError:false})
+  const [password,setPassword] = useState({string:'', hasErrorPass:false})
+      console.log(password)
   const refEmail = useRef()
-  const handleChangeEmail = (e) => {
-    setEmail(e.target.value)
+
+  const handleBlurUsername = (e) => {
+      let hasError = false
+      const valueEmail = e.target.value
+      if( !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(valueEmail)) {
+         hasError = true
+      }
+      setEmail(currentValue => ({
+        ...currentValue,
+        hasError,
+      }))
   }
-    console.log(email);
+
+  const handleBlurPassword = (e) => {
+    let hasErrorPass = false
+    const valuePassword = e.target.value
+    if( !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test(valuePassword)) {
+      hasErrorPass = true
+    }
+    setPassword(currentValue => ({
+      ...currentValue,
+      hasErrorPass,
+    }))
+}
+
   return (
   <FormContainer>
    <FormContent onSubmit={handleSubmitAccount}>
     <TitleDiv><h1>Login</h1></TitleDiv>
       <LoginForm>
     <FormInput>
-      <h5>UserName</h5>
+      <h5>Email</h5>
       <div style={{display:'flex',borderBottom:'2px solid gray'}}>
       <BsPerson style={{display:'block', margin:'12px auto'}}/>
-      <input type={`text`} placeholder={`Type your username`} name={`email`} onChange={handleChangeEmail} value={email} ref={refEmail}/>
+      <input type={`text`} 
+             placeholder={`Type your username`} 
+             name={`email`} 
+             onChange={(e) => {setEmail({...email,string:e.target.value})}} 
+             value={email.string}
+             onBlur={handleBlurUsername}
+             ref={refEmail} 
+             />
       </div>
+      {email.hasError && <ErrorMessage>Please enter a valid username.</ErrorMessage>}
     </FormInput>
     <FormInput>
      <h5>Password</h5>
      <div style={{display:'flex',borderBottom:'2px solid gray'}}>
       <RiLockPasswordLine style={{display:'block', margin:'12px auto'}}/>
-      <input type={`password`} placeholder={`Type your password`} name={`password`}/>
+      <input type={`password`} 
+            placeholder={`Type your password`} 
+            name={`password`} 
+            value={password.string} 
+            onChange={(e) => {setPassword({...password ,string:e.target.value})}}
+            onBlur={handleBlurPassword}
+            />
       </div>
-      <div style={{display:'block',margin:'8px auto',padding:'4px',textAlign:'center'}}>
+      {password.hasErrorPass &&  <ErrorMessage>should contain at least 8 from the mentioned characters</ErrorMessage> }
+      <div style={{display:'block',margin:'4px auto',padding:'4px',textAlign:'center'}}>
         <a href='/' style={{color:'black',textDecoration:'none'}} >Forgot password?</a>
       </div>
     </FormInput>
-    <LoginButton><h3>Login</h3></LoginButton>
+    <LoginButton type={`submit`}><h3>Login</h3></LoginButton>
       </LoginForm>
 
-    <div style={{display:'block',margin:'64px 0px auto',textAlign:'center'}}
+    <div style={{display:'block',margin:'84px 0px auto',textAlign:'center'}}
         ><p>Or Sign Up Using</p></div>
 
     <div style={{display:'block',margin:'8px 0px auto',textAlign:'center', fontSize:'24px'}}
@@ -136,7 +173,7 @@ const FormInput = styled.div`
 `
 const LoginButton = styled.button`
   display: block;
-  margin: 36px auto;
+  margin: 52px auto;
   height: 40px;
   width: 70%;
   border:none;
@@ -152,4 +189,11 @@ const LoginButton = styled.button`
   &:hover {
     cursor: pointer;
   }
+`
+const ErrorMessage = styled.span`
+  color: red;
+  display: block;
+  margin: 0 auto;
+  font-size: 14px;
+  text-align: center;
 `

@@ -12,10 +12,10 @@ const App = () => {
   const handleSubmitAccount = (e) => {
     e.preventDefault();
     const dataAccount = new FormData(e.target)
-   console.log(Object.fromEntries(dataAccount))
-   
+   console.log(Object.fromEntries(dataAccount.entries()))
   };
 
+ 
   const [items, setItems] = useState([]);
 
   const handleAddProduct = (product) => {
