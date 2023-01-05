@@ -8,7 +8,7 @@ import Switch from "./components/switch/Switch";
 
 const App = () => {
   const { productItems } = data;
-
+ 
   const handleSubmitAccount = (e) => {
     e.preventDefault();
     const dataAccount = new FormData(e.target)
