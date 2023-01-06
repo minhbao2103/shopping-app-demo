@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import {AiOutlineShoppingCart} from "react-icons/ai"
 
-import Cart from '../cart/Cart'
 
 const Header = ({items}) => {
   return (

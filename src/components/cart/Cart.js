@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Cart = ({ items,handleRemoveProduct,handleAddProduct }) => {
+  
       const totalPrice = items.reduce((price, item) => price + ( item.quantity * item.price ) , 0 )
 
   return (

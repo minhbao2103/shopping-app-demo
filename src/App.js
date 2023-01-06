@@ -8,6 +8,7 @@ import Switch from "./components/switch/Switch";
 
 const App = () => {
   const { productItems } = data;
+  const [items, setItems] = useState([]);
  
   const handleSubmitAccount = (e) => {
     e.preventDefault();
@@ -15,8 +16,6 @@ const App = () => {
    console.log(Object.fromEntries(dataAccount.entries()))
   };
 
- 
-  const [items, setItems] = useState([]);
 
   const handleAddProduct = (product) => {
     const productsExist = items.find((item) => item.id === product.id);

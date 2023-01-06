@@ -181,6 +181,7 @@ const FormInput1 = styled.div`
   width: 140px;
   display: block;
   margin: 0px auto;
+  border-bottom: 2px solid black;
 
   input {
     height: 100%;
@@ -188,7 +189,7 @@ const FormInput1 = styled.div`
     padding: 2px 8px;
     border-radius: 6px;
     outline: none;
-    border: 1px solid black;
+    border: none;
   }
 `;
 
