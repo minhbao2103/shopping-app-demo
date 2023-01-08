@@ -19,8 +19,8 @@ const Header = ({items,user}) => {
             <StyledLink to="/" >Products</StyledLink>
             </TitleContent>
 
-            <TitleContent style={{width:'140px',whiteSpace:'no-wrap',overflow:'hidden',  textOverflow:'ellipsis' }}>
-            <StyledLink to="/login"> {user ? user.email : 'Login'}</StyledLink>
+            <TitleContent style={{whiteSpace:'no-wrap',overflow:'hidden',  textOverflow:'ellipsis' }}>
+            <StyledLink to="/login">Login</StyledLink>
             </TitleContent>
 
             <TitleContent>
@@ -94,7 +94,6 @@ const TitleContent = styled.h3`
     @media screen and (max-width: 550px) {
         font-size: 16px;
         padding: 0px 4px;
-        width: 100px;
     }
 `
 const StyledLink = styled(Link)`

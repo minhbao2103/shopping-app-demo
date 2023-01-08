@@ -25,8 +25,9 @@ const App = () => {
         password.string
         );
         navigate('/')
+        console.log(user);
     } catch (error) {
-        alert('email or password is not correct, please try again.')
+        alert('Email or password is not correct, please try again.')
       }
 
     
@@ -40,10 +41,11 @@ const App = () => {
  
   const handleSubmitAccount = (e) => {
     e.preventDefault();
-    const dataAccount = new FormData(e.target)
-  //  console.log(Object.fromEntries(dataAccount.entries()))
+  //   const dataAccount = new FormData(e.target)
+  // //  console.log(Object.fromEntries(dataAccount.entries()))
     setEmail({...email, string:''})
     setPassword({...password, string:''})
+
   };
 
 
