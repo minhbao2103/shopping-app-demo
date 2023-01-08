@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 import {AiOutlineShoppingCart} from "react-icons/ai"
 
 
-const Header = ({items}) => {
+const Header = ({items,user}) => {
+    console.log(user);
   return (
     <HeaderContainer>
         <BongHome>
@@ -18,8 +19,8 @@ const Header = ({items}) => {
             <StyledLink to="/" >Products</StyledLink>
             </TitleContent>
 
-            <TitleContent>
-            <StyledLink to="/login">Login</StyledLink>
+            <TitleContent style={{width:'140px',whiteSpace:'no-wrap',overflow:'hidden',  textOverflow:'ellipsis' }}>
+            <StyledLink to="/login"> {user ? user.email : 'Login'}</StyledLink>
             </TitleContent>
 
             <TitleContent>
@@ -93,6 +94,7 @@ const TitleContent = styled.h3`
     @media screen and (max-width: 550px) {
         font-size: 16px;
         padding: 0px 4px;
+        width: 100px;
     }
 `
 const StyledLink = styled(Link)`

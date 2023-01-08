@@ -1,46 +1,22 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { auth } from "../fisebase-config/Firebase-config"
-import { signInWithEmailAndPassword ,onAuthStateChanged} from "firebase/auth";
+import React from "react";
+import { useRef } from "react";
+
 
 import styled from "styled-components";
+
 import { BsPerson } from "react-icons/bs";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { FaFacebook } from "react-icons/fa";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { SiYoutubemusic } from "react-icons/si";
-import { useRef } from "react";
-import { useNavigate } from 'react-router-dom';
 
 
 
-const Login = ({ handleSubmitAccount }) => {
-  const [email, setEmail] = useState({ string: "", hasError: false });
-  const [password, setPassword] = useState({ string: "", hasErrorPass: false });
+const Login = ({ handleSubmitAccount ,email,password, setEmail,setPassword,login}) => {
+
   const refEmail = useRef();
-  const navigate = useNavigate()
-  const [user,setUser] =useState({})
-
- useEffect(() => {
-  onAuthStateChanged(auth,(currentUser) => {
-    setUser(currentUser)
-})
- },[])
 
 
-
-  const login = async () => {
-      try {
-        const user = await signInWithEmailAndPassword(
-          auth,
-          email.string,
-          password.string
-          );
-          navigate('/')
-      } catch (error) {
-          console.log((error.message));
-      }
-  };
 
   const handleBlurUsername = (e) => {
     let hasError = false;
@@ -134,8 +110,6 @@ const Login = ({ handleSubmitAccount }) => {
           <LoginButton type={`submit`} onClick={login}>
             <h3>Login</h3>
           </LoginButton>
-      <h4>user login: </h4>
-      {user.email}
         </LoginForm>
 
         <div
@@ -178,7 +152,7 @@ const Login = ({ handleSubmitAccount }) => {
           }}
         >
           <a
-            href="/register"
+            href="#create"
             style={{
               fontWeight: "500",
               textDecoration: "none",

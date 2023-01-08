@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-
 const Products = ({productItems,handleAddProduct}) => {
 
 
@@ -26,6 +25,7 @@ export default Products
 const Container = styled.div`
     height: auto;
     width: 100%;
+    background: white;
 `
 const ContentContainer =styled.div`
   display: flex;
